@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * Test binary tree creation from an array.
  */
-public class TestTreeCreationFromArray {
+public class TestBinaryTreeService {
     private BinaryTreeService bts;
 
     @Before
