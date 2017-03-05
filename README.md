@@ -4,4 +4,4 @@ Program that checks whether or not a binary tree is balanced.
 
 ## Dependencies
 Maven 2
-Java 1.8
+Java 8
