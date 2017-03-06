@@ -39,6 +39,14 @@ public class BinaryTreeServiceImpl implements BinaryTreeService {
     public boolean isBalanced(TreeNode root) {
         if(root == null) return true;
 
+        return findHeight2(root) != -1;
+    }
+
+
+    /*public boolean isBalanced(TreeNode root) {
+        // easiest solution O(nlogn): time O(h): space -> n = # nodes and h = height of the tree
+        if(root == null) return true;
+
         boolean balanced = true;
 
         Stack<TreeNode> treeStack = new Stack<>();
@@ -56,7 +64,7 @@ public class BinaryTreeServiceImpl implements BinaryTreeService {
         }
 
         return balanced;
-    }
+    }*/
 
     @Override
     public int findHeight(TreeNode root) {
@@ -65,6 +73,21 @@ public class BinaryTreeServiceImpl implements BinaryTreeService {
         int lh = findHeight(root.getLeft());
         int rh = findHeight(root.getRight());
 
-        return lh > rh ? lh + 1 : rh + 1;
+        return Math.max(lh, rh) + 1;
+    }
+
+    public int findHeight2(TreeNode root) {
+        // O(n): time O(h): space -> n = # nodes and h = height of the tree
+        if(root == null) return 0;
+
+        int lh = findHeight(root.getLeft());
+
+        if(lh == -1) return -1;
+
+        int rh = findHeight(root.getRight());
+
+        if (rh == -1 || Math.abs(lh - rh) > 1) return -1;
+
+        return Math.max(lh, rh) + 1;
     }
 }
